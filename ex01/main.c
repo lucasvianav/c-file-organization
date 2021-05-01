@@ -11,7 +11,7 @@ int main(){
     scanf("%s", filename);
 
     // opens the file in reading mode
-    FILE *fp = fopen(filename, 'r');
+    FILE *fp = fopen(filename, "r");
 
     // string in which all of the file's content will be stored
     // it's initial value is 1 byte because each char will be read
