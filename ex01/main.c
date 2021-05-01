@@ -29,6 +29,10 @@ int main(){
         content[contentSize-1] = tmp;
     }
     
+    // terminates the string 
+    content = (char *)realloc(content, ++contentSize * sizeof(char));
+    content[contentSize-1] = '\0';
+
     // temporary/auxiliar variables to read each .csv row
     // and corresponding csvs
     char *tmp_row, *tmp_id, *tmp_name; 
@@ -38,22 +42,23 @@ int main(){
     if(content){ strsep(&content, "\n"); }
 
     // loops through every row (every register)
-    while(content){
+    while(strcmp(content, "")){
         // gets next row
         tmp_row = strsep(&content, "\n");
         
         // gets each of the row's values
         tmp_id = strsep(&tmp_row, ", ");
         tmp_name = strsep(&tmp_row, ", ");
-        tmp_age = atoi(strsep(&tmp_row, ", "));
+        tmp_age = atoi(tmp_row);
         
         // if that row's user is overage, prints output
         if(tmp_age >= 18){ strcmp(tmp_name, "") ? printf("O usuario %s eh de maior.\n", tmp_name) : printf("O usuario de identificacao %s eh de maior.\n", tmp_id); }
     }
 
-    // frees allocated memory
     fclose(fp);
-    free(content);
+
+    // it's not necessary to free content 
+    // for strsep()'ll clean that for us
 
     return 0;
 }
