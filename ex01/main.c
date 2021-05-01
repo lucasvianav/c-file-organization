@@ -31,6 +31,10 @@ int main(){
     // terminates the string
     content = (char *)realloc(content, ++contentSize * sizeof(char));
     content[contentSize-1] = '\0';
+    
+    // frees allocated memory
+    fclose(fp);
+    free(content);
 
     return 0;
 }
