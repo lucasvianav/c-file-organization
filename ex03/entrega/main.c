@@ -1,3 +1,5 @@
+/* AUTHOR: Lucas Viana Vilela */
+/* N_USP: 10748409 */
 
 #include <stdio.h>
 #include <stdlib.h>
